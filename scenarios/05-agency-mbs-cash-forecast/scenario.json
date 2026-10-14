@@ -1,0 +1,9 @@
+{
+  "id": "05",
+  "name": "Agency MBS cash forecast",
+  "domain": "Agency MBS / Treasury",
+  "type": "correctness",
+  "difficulty": "easy",
+  "timebox_minutes": 20,
+  "stack": "Python stdlib, Decimal"
+}

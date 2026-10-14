@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "name": "CLO compliance runtime",
+  "domain": "CLO collateral compliance",
+  "type": "performance",
+  "difficulty": "medium",
+  "timebox_minutes": 40,
+  "stack": "Python, pandas"
+}

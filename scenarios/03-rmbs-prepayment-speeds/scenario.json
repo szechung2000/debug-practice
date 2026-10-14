@@ -1,0 +1,9 @@
+{
+  "id": "03",
+  "name": "RMBS prepayment speeds",
+  "domain": "Non-agency RMBS analytics",
+  "type": "correctness",
+  "difficulty": "hard",
+  "timebox_minutes": 40,
+  "stack": "Python, pandas"
+}
