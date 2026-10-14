@@ -94,8 +94,10 @@ def cmd_start(args) -> int:
         raise SystemExit(f"{scenario.name} has local changes. Run `reset {args.scenario}` first.")
     stamp = now_utc().strftime("%Y%m%d-%H%M%S")
     branch = f"attempt/{scenario.name}-{stamp}"
-    base = git("rev-parse", "HEAD")
-    git("switch", "-c", branch)
+    # Always start from main, so an earlier attempt never leaks into this one.
+    base_ref = args.base or "main"
+    base = git("rev-parse", base_ref)
+    git("switch", "-c", branch, base_ref)
     run_generator(scenario)
     SESSIONS.mkdir(parents=True, exist_ok=True)
     session = {
@@ -274,7 +276,9 @@ def main() -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list").set_defaults(fn=cmd_list)
     sub.add_parser("history").set_defaults(fn=cmd_history)
-    p = sub.add_parser("start"); p.add_argument("scenario"); p.set_defaults(fn=cmd_start)
+    p = sub.add_parser("start"); p.add_argument("scenario")
+    p.add_argument("--base", help="branch to start from (default: main)")
+    p.set_defaults(fn=cmd_start)
     p = sub.add_parser("verify"); p.add_argument("scenario")
     p.add_argument("--details", action="store_true", help="show failing check output (spoils the answer)")
     p.set_defaults(fn=cmd_verify)
