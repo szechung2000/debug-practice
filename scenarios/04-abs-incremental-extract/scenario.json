@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "name": "ABS incremental extract",
+  "domain": "Auto ABS loan-level data",
+  "type": "correctness",
+  "difficulty": "medium",
+  "timebox_minutes": 35,
+  "stack": "Python stdlib, SQLite"
+}

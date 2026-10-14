@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "name": "CMBS remittance restatements",
+  "domain": "CMBS investor reporting",
+  "type": "correctness",
+  "difficulty": "medium",
+  "timebox_minutes": 30,
+  "stack": "Python stdlib, SQLite"
+}

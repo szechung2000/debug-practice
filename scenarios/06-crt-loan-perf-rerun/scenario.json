@@ -1,0 +1,9 @@
+{
+  "id": "06",
+  "name": "CRT loan performance rerun",
+  "domain": "Credit risk transfer (CAS / STACR)",
+  "type": "correctness",
+  "difficulty": "medium",
+  "timebox_minutes": 30,
+  "stack": "Python stdlib, threads, SQLite"
+}
