@@ -215,7 +215,9 @@ def cmd_grade(args) -> int:
         return 0
     print("\nAsking a fresh Claude instance to grade the session (1-3 minutes)...")
     with tempfile.TemporaryDirectory(prefix="dp-grader-") as cwd:
-        proc = subprocess.run(["claude", "-p", "Grade this debugging session. Follow the instructions in the input exactly."],
+        # next-steps' turn.complete hook makes `claude -p` exit 1 ("No messages returned from query")
+        proc = subprocess.run(["claude", "-p", "Grade this debugging session. Follow the instructions in the input exactly.",
+                               "--settings", '{"enabledPlugins": {"next-steps@claude-community": false}}'],
                               input=prompt, capture_output=True, text=True, cwd=cwd, timeout=900)
     if proc.returncode != 0:
         print(proc.stderr, file=sys.stderr)
