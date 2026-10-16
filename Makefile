@@ -8,6 +8,7 @@ help:
 	@echo "make list               list the scenarios"
 	@echo "make start   S=01       new attempt: branch, fresh data, incident ticket"
 	@echo "make verify  S=01       run the hidden checks (asks for the passphrase)"
+	@echo "make verify  S=01 DETAILS=1  also show failing check output (spoils the answer)"
 	@echo "make grade   S=01       score the fix and your AI interaction"
 	@echo "make reset   S=01       restore the scenario to its original state"
 	@echo "make history            scores of earlier attempts"
@@ -24,7 +25,7 @@ start:
 	@$(PY) tools/practice.py start $(S)
 
 verify:
-	@$(PY) tools/practice.py verify $(S)
+	@$(PY) tools/practice.py verify $(S) $(if $(DETAILS),--details)
 
 grade:
 	@$(PY) tools/practice.py grade $(S)
