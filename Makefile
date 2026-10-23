@@ -1,10 +1,10 @@
-PY ?= python3
+PY ?= uv run python
 S ?=
 
 .PHONY: help setup list start verify grade reset history test check-key
 
 help:
-	@echo "make setup              create .venv and install requirements"
+	@echo "make setup              install dependencies with uv sync"
 	@echo "make list               list the scenarios"
 	@echo "make start   S=01       new attempt: branch, fresh data, incident ticket"
 	@echo "make verify  S=01       run the hidden checks (asks for the passphrase)"
@@ -15,8 +15,8 @@ help:
 	@echo "make test               visible tests of all scenarios"
 
 setup:
-	$(PY) -m venv .venv && .venv/bin/pip install -q -r requirements.txt
-	@echo "Activate with: source .venv/bin/activate"
+	uv sync
+	@echo "Run commands with uv run, or: source .venv/bin/activate"
 
 list:
 	@$(PY) tools/practice.py list

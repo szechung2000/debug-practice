@@ -24,10 +24,10 @@ ticket, as you would on call. Suggested order: 05, 01, 06, 04, 02, 03.
 
 ## Setup (once)
 
-Requirements: Python 3.11+, git, Claude Code (`claude` on your PATH).
+Requirements: [uv](https://docs.astral.sh/uv/) (it fetches Python 3.11+ if needed), git, Claude Code (`claude` on your PATH).
 
 ```bash
-make setup && source .venv/bin/activate
+make setup make setup && source .venv/bin/activatemake setup && source .venv/bin/activate source .venv/bin/activate   # or prefix commands with `uv run`
 make check-key          # test the answer-key passphrase
 ```
 
@@ -98,9 +98,9 @@ tools/               practice driver, transcript parser, key vault
 ## Adding or editing scenarios
 
 ```bash
-python tools/keyvault.py unpack --out ~/dp-answer-key     # outside the repo
+uv run python tools/keyvault.py unpack --out ~/dp-answer-key     # outside the repo
 # edit ~/dp-answer-key/<scenario>/ANSWER.md, hidden_tests/, reference.patch
-python tools/keyvault.py pack --src ~/dp-answer-key
+uv run python tools/keyvault.py pack --src ~/dp-answer-key
 rm -rf ~/dp-answer-key
 ```
 
