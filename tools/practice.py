@@ -30,11 +30,10 @@ import transcript as tx  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCENARIOS = REPO_ROOT / "scenarios"
-# Session state and grading reports live outside the repo, so an AI session
-# working in the repo does not read earlier answer keys or reports.
+# Session state lives outside the repo; grading output lives in .report/.
 STATE = Path(os.environ.get("DEBUG_PRACTICE_HOME", Path.home() / ".debug-practice")) / REPO_ROOT.name
 SESSIONS = STATE / "sessions"
-REPORTS = STATE / "reports"
+REPORTS = REPO_ROOT / ".report"
 EVAL = REPO_ROOT / "evaluation"
 
 

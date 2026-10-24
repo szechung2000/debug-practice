@@ -75,8 +75,10 @@ Score: 40 points outcome (root cause, fix quality) + 60 points interaction
 (framing, investigation, verification, steering, efficiency, ownership).
 See [evaluation/RUBRIC.md](evaluation/RUBRIC.md).
 
-Reports, metrics and session state are written to
-`~/.debug-practice/debug-practice/`, outside the repo. `make history` shows
+Reports, grading prompts and metrics are written to `.report/<attempt>/` at
+the repository root. Session state and score history remain in
+`~/.debug-practice/debug-practice/` (or under `DEBUG_PRACTICE_HOME` when set).
+The `.report/` directory is ignored by Git. `make history` shows
 your scores over time. Use `--no-llm` to only write the grading prompt (you can
 paste it into a new Claude chat), and `--transcript FILE` to choose transcripts.
 
